@@ -20,17 +20,17 @@ public class BasicLuisDialog : LuisDialog<object>
         await context.PostAsync($"You have reached the none intent. You said: {result.Query}"); //
         context.Wait(MessageReceived);
     }
-    [LuisIntent("Pais")]
-    public async Task PaisIntent(IDialogContext context, LuisResult result)
-    {
-        var pais = result.Entities.FirstOrDefault(entity => entity.Type == "geography")?.Entity;
-        await context.PostAsync($"Mi pais: {pais}"); 
+    //[LuisIntent("Pais")]
+    //public async Task PaisIntent(IDialogContext context, LuisResult result)
+    //{
+    //    var pais = result.Entities.FirstOrDefault(entity => entity.Type == "geography")?.Entity;
+    //    await context.PostAsync($"Mi pais: {pais}"); 
 
-        context.Wait(MessageReceived);
-    }
+    //    context.Wait(MessageReceived);
+    //}
     // Go to https://luis.ai and create a new intent, then train/publish your luis app.
     // Finally replace "MyIntent" with the name of your newly created intent in the following handler
-    [LuisIntent("MyIntent")]
+    [LuisIntent("Pais")]
     public async Task MyIntent(IDialogContext context, LuisResult result)
     {
         await context.PostAsync($"You have reached the MyIntent intent. You said: {result.Query}"); //
