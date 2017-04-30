@@ -23,7 +23,8 @@ public class BasicLuisDialog : LuisDialog<object>
     [LuisIntent("Pais")]
     public async Task PaisIntent(IDialogContext context, LuisResult result)
     {
-        await context.PostAsync($"Mi pais: {result.Query}"); 
+        var pais = result.Entities.FirstOrDefault(entity => entity.Type == "geography")?.Entity;
+        await context.PostAsync($"Mi pais: {pais}"); 
 
         context.Wait(MessageReceived);
     }
